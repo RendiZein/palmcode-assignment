@@ -3,7 +3,9 @@ There are 3 ways you can run it locally. The options are via conda environment, 
 ## Conda environment
 These are the steps
 1. Clone this repository
-`git clone https://github.com/ruhyadi/vision-fr`
+```
+git clone https://github.com/ruhyadi/vision-fr
+```
 2. Change the parrent directory
 `cd "palmcode-assignment"`
 
