@@ -1,0 +1,8 @@
+# rest api
+fastapi==0.111.1
+#api for gemini model
+google-ai-generativelanguage==0.6.6
+#connect with html 
+Jinja2==3.1.4
+#handle csv file
+pandas==2.2.2
