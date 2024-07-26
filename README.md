@@ -12,7 +12,7 @@ conda activate palmcode_chatbot
 ```
 3. Clone this repository
 ```
-git clone https://github.com/ruhyadi/vision-fr
+git clone https://github.com/RendiZein/palmcode-assignment
 ```
 4. Change the parrent directory
 ```
