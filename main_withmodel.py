@@ -11,7 +11,7 @@ os.environ['GOOGLE_API_KEY'] = "GOOGLE_API_KEY"
 genai.configure(api_key = os.environ['GOOGLE_API_KEY'])
 
 #handle csv file
-csv_path="/home/rendi/coding/palm code/appointments.csv"
+csv_path="appointments.csv"
 df=pd.read_csv(csv_path)
 df=df.astype({'Name': 'string','Date': 'string','Start': 'string','End': 'string'})
 if len(df['Start'][0])>5:#for first time
