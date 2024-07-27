@@ -8,7 +8,7 @@ import pandas as pd #handle csv file
 from app.helper import chating, extract_csv
 
 #connect to api
-os.environ['GOOGLE_API_KEY'] = "AIzaSyAJMOmPsa1HqGamC9napetTTO0te4FW9Lk"
+os.environ['GOOGLE_API_KEY'] = "GOOGLE_API_KEY"
 genai.configure(api_key = os.environ['GOOGLE_API_KEY'])
 
 app = FastAPI()
