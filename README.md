@@ -62,12 +62,12 @@ cd "palmcode-assignment"
 docker build -t myimage .
 ```
 
-2. Run the docker container.
+4. Run the docker container.
 ```
 docker run -d --name mycontainer -p 8000:8000 myimage
 ```
 
-3. Open the local host
+5. Open the local host
 ```
 http://127.0.0.1:8000/
 ```
