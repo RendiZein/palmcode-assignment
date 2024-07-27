@@ -77,13 +77,13 @@ fastapi dev app/main.py
 1. Pull the docker hub.
 
 ```
-
+docker pull rendimz/palmcode-assignment:latest
 ```
 
 2. Run the docker container.
 
 ```
-
+docker run -d --name mycontainer -p 8000:8000 rendimz/palmcode-assignment:latest
 ```
 
 3. Open the local host
@@ -95,8 +95,6 @@ http://127.0.0.1:8000/
 ### Point
 
 2. The advantages and disadvantages using this way is
-
-* You can't watch the change of csv file
 * Simplest way to test the chatbot
 
 ## Colab (Inference)
