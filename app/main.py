@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware #to handle fetch from html
 from app.helper import * 
 
 #connect to api
-os.environ['GOOGLE_API_KEY'] = "AIzaSyA28x0G-6PFd3U5-T5V-VyiUIndIDYGLAo"
+os.environ['GOOGLE_API_KEY'] = "GOOGLE_API_KEY"
 genai.configure(api_key = os.environ['GOOGLE_API_KEY'])
 
 app = FastAPI()
