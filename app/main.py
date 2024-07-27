@@ -3,47 +3,27 @@ from fastapi.templating import Jinja2Templates #to conect with html
 import os
 import google.generativeai as genai #chatbot model
 from fastapi.middleware.cors import CORSMiddleware #to handle fetch from html
-# import json #convert output from model
-# import pandas as pd #handle csv file
-from app.helper import * 
+import json #convert output from model
+import pandas as pd #handle csv file
+from app.helper import chating, extract_csv
 
 #connect to api
-os.environ['GOOGLE_API_KEY'] = "GOOGLE_API_KEY"
+os.environ['GOOGLE_API_KEY'] = "AIzaSyAJMOmPsa1HqGamC9napetTTO0te4FW9Lk"
 genai.configure(api_key = os.environ['GOOGLE_API_KEY'])
 
 app = FastAPI()
 templates = Jinja2Templates(directory="app/templates") 
 
-# connect with fetch
-origins = [
-    "http://127.0.0.1:8000",
-    "http://localhost:8000",
-    "http://localhost:8080",
-    "http://localhost"
-]
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-#endpoint for ui
-@app.get("/")
-async def root(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
-
 #extract data csv
-datas, df, csv_path=extract_csv()
-
+csv_path="app/appointments.csv"
+datas,df=extract_csv(csv_path)
 #initiate agent
 model = genai.GenerativeModel('gemini-1.5-flash')
 prompt = """
         You are straight forward booking assistant of palm_surfing (surfing company) in bali.
         Be polite and humble.
         The current time is 7 am 20 july 2024.
-        The surfing available from 08:00 until 19:00.
+        The surfing open from 08:00 until 19:00.
         Response without any syntax.
         First :
                 Ask name, date(YYYY-MM-DD), start time, finish time of user will book.
@@ -68,6 +48,26 @@ user_response="hello"
 #give user response 
 bot_response = chat.send_message([f"The booked data {datas}. other time outside the booked data is available."\
         ,prompt, f"user response :{user_response}"])   
+
+# connect with fetch
+origins = [
+    "http://127.0.0.1:8000",
+    "http://localhost:8000",
+    "http://localhost:8080",
+    "http://localhost"
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+#endpoint for ui
+@app.get("/")
+async def root(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
 #endpoint for chatting with agent
 @app.post("/chat")
